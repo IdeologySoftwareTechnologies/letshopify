@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+.show
+ {
+ 	width:30%;
+ 	height:100%;
+ 	background-color: #B2B2B2;
+ }
+ .interactionContainer
+ {
+ 	width:100%;
+ 	height:100%;
+ 	background-color: #33CCFF;
+ }

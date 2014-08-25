@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sub Categories</strong>
+  <% @a=@productcategory.children %>
+  <ul>
+  
+  <% @a.each do |i|%>
+  	<li>
+  		<%=Productcategory.where(:id=>i).pluck(:name).join("")%>
+  		<td><%= link_to 'Show', i %></td>
+      <td><%= link_to 'Add child', new_productcategory_path(parent_id: i) %></td>
+   	</li>
+  <%end%>
+ 
+  </ul>
+
+
+</p>
+
+<%= link_to 'Edit', edit_productcategory_path(@productcategory) %> |
+<%= link_to 'Back', productcategories_path %>

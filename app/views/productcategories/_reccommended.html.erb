@@ -1,0 +1,29 @@
+
+  <p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Sub Categories of : <%=productcategory.name%></strong>
+  <% @a=productcategory.children %>
+
+  <ul>
+  
+  <% @a.each do |i|%>
+  <br>
+  	<li>
+
+  		<div class="show"><%=link_to Productcategory.where(:id=>i).pluck(:name).join(""),i,remote: true%></div>
+  		
+      <%= link_to 'Add Sub Category', new_productcategory_path(parent_id: i) %>
+      <td><%= link_to 'Edit', edit_productcategory_path(i) %> </td>
+      <td><%= link_to 'Destroy', i, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <%= link_to 'Add product', new_productcategory_product_path(i) %>
+      <td><div id="interactionContainer<%=i.id%>" ></div></td>
+
+   	</li>
+  <%end%>
+ 
+  </ul>
+
+
+</p>

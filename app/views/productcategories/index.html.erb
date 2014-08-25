@@ -1,0 +1,23 @@
+<h1>Listing productcategories</h1>
+<h3>Main Categories</h3>
+  <ul>
+    <% @productcategories.each do |productcategory| %>
+       <% if productcategory.root?%>
+          <br>
+          <br>
+           <li>
+            <div class="some_trigger1" ><%= link_to productcategory.name, productcategory,  remote: true%>
+            </div>
+            <% parentid=productcategory.id%>
+            <p class="para"></p>
+            
+            <%= link_to 'Edit', edit_productcategory_path(productcategory) %>
+            <%= link_to 'Destroy', productcategory, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Add Sub Category', new_productcategory_path(parent_id: parentid) %>
+            <div id="interactionContainer<%=productcategory.id%>" class="interactionContainer"></div>
+             
+          </li>
+        <% end %>
+    <% end %>
+<br>
+<%= link_to 'New Productcategory', new_productcategory_path(parent_id: 0) %>
