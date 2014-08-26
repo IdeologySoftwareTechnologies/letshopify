@@ -12,7 +12,9 @@
  *
  *= require_tree .
  *= require_self
+
  */
+<<<<<<< HEAD:app/assets/stylesheets/application.css
 .show
  {
  	width:30%;
@@ -25,3 +27,8 @@
  	height:100%;
  	background-color: #33CCFF;
  }
+=======
+ @import "bootstrap-sprockets";
+@import "bootstrap";
+
+>>>>>>> db1fec29201f65c8d567e28c6b7522380fee3caa:app/assets/stylesheets/application.css.scss

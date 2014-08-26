@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+<<<<<<< HEAD
 $(document).ready(function(){
   $("#button1").click(function(){
     $("#p1").hide();
@@ -26,3 +27,6 @@ $(document).ready(function(){
   });
    
 });
+=======
+//= require bootstrap-sprockets
+>>>>>>> db1fec29201f65c8d567e28c6b7522380fee3caa
