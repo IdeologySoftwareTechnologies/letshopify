@@ -11,11 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 20140825111941) do
 
-#ActiveRecord::Schema.define(version: 20140825111941) do
-
-  ActiveRecord::Schema.define(version: 20140825090458) do
-   create_table "admins", force: true do |t|
+  create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -42,6 +40,33 @@
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   add_index "admins", ["unlock_token"], name: "index_admins_on_unlock_token", unique: true
 
+  create_table "productcategories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "parent_id"
+  end
+
+  create_table "productcategory_hierarchies", force: true do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
+  end
+
+  add_index "productcategory_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "productcategory_anc_desc_udx", unique: true
+  add_index "productcategory_hierarchies", ["descendant_id"], name: "productcategory_desc_idx"
+
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "price"
+    t.integer  "productcategory_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "products", ["productcategory_id"], name: "index_products_on_productcategory_id"
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -61,7 +86,6 @@
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.integer  "admin_id"
-
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -70,27 +94,5 @@
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true
-  create_table "productcategories", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "parent_id"
-  end
 
-  create_table "productcategory_hierarchies", force: true do |t|
-    t.integer "ancestor_id",   null: false
-    t.integer "descendant_id", null: false
-    t.integer "generations",   null: false
-  end
-
-  add_index "productcategory_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "productcategory_anc_desc_udx", unique: true
-  add_index "productcategory_hierarchies", ["descendant_id"], name: "productcategory_desc_idx"
-  create_table "products", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "price"
-    t.integer  "productcategory_id" 
-  end
-  add_index "products", ["productcategory_id"], name: "index_products_on_productcategory_id"
 end
-  
