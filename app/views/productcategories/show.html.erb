@@ -1,22 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Sub Categories</strong>
-  <% @a=@productcategory.children %>
-  <ul>
   
-  <% @a.each do |i|%>
-  	<li>
-  		<%=Productcategory.where(:id=>i).pluck(:name).join("")%>
-  		<td><%= link_to 'Show', i %></td>
-      <td><%= link_to 'Add child', new_productcategory_path(parent_id: i) %></td>
-   	</li>
-  <%end%>
- 
-  </ul>
-
-
+  <u><h2><%= @productcategory.name%></h2></u>
 </p>
+<%if @productcategory.products.count == 0 %>
+  <h3>No Stock in <%= @productcategory.name%></h3>
+<% else %>
+  <ul>
 
-<%= link_to 'Edit', edit_productcategory_path(@productcategory) %> |
+    <% @productcategory.products.each do |product| %>
+      <li><%= link_to product.name ,productcategory_product_path(@productcategory,product)%>    </li>
+  
+    <% end %>
+  </ul>
+<%end%>
 <%= link_to 'Back', productcategories_path %>
+
+
