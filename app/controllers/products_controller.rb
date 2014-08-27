@@ -22,6 +22,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    @productcategory = Productcategory.find(params[:productcategory_id])
   end
 
   # POST /products
@@ -43,9 +44,10 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    @productcategory = Productcategory.find(params[:productcategory_id])
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to productcategory_product_path(@productcategory,@product), notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }
@@ -57,9 +59,10 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
+    @productcategory = Productcategory.find(params[:productcategory_id])
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to productcategory_path(@productcategory), notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
