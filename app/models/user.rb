@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
+  mount_uploader :user_avatar, UserAvatarUploader
     
   devise :database_authenticatable, :registerable,
 

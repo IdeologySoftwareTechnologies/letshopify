@@ -17,14 +17,7 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.model "Admin" do
-    edit do
-      
-      field :email
-      field :password
-     
-    end
-  end
+ 
 
 
   RailsAdmin.config do |config|
