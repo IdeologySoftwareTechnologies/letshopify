@@ -6,8 +6,7 @@
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @product.description %>
+  <%= image_tag @product.productimage_url %>
 </p>
 
 <p>
@@ -16,9 +15,15 @@
 </p>
 
 <p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
   <strong>Productcategory:</strong>
   <%= @product.productcategory.name %>
 </p>
+
 <%= link_to 'Back', productcategory_path(@productcategory) %>|
 <!--
   <%= link_to 'Edit', edit_productcategory_product_path(@productcategory,@product) %> 
