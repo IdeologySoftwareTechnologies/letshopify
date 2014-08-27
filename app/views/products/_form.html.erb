@@ -5,6 +5,7 @@
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :price %>
+    <%= f.input :productimage, :as => :file %>
     <%= f.hidden_field :productcategory_id, :value => @productcategory.id %>
   </div>
 
