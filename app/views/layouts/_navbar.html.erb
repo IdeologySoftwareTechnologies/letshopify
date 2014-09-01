@@ -28,6 +28,10 @@
 														  <% @a.each do |i|%>
 														    
 															<li><%=link_to Productcategory.where(:id=>i).pluck(:name).join(""),i%></li>
+															<ul >
+															  <li>ddd</li>
+															  <li>ddd</li>
+															</ul>
 														  <%end%>
 														</ul>
 														
