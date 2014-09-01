@@ -37,8 +37,23 @@
     							</div><!-- End .header-top-dropdowns -->
     							
     							<div class="header-text-container pull-right">
-    								<p class="header-text">Welcome to Venedor!</p>
-        							<p class="header-link"><a href="#">login</a>&nbsp;or&nbsp;<a href="#">create an account</a></p>
+    								<p class="header-text">Welcome to Letshoppify!</p>
+        							<p class="header-link">
+                                      <%- if user_signed_in? %>
+                                         Hello <%= current_user.email %>
+                                         &nbsp;&nbsp; 
+                                        <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+                                        &nbsp;or&nbsp;
+                                        <%= link_to 'Edit profile',edit_user_registration_path %>
+                                      <%-else%>
+                                        <%= link_to 'Sign in', new_user_session_path %>
+                                        &nbsp;&nbsp; 
+                                        <%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %>
+                                         &nbsp;&nbsp; 
+                                        <%= link_to "Sign in with Linkedin",user_omniauth_authorize_path(:linkedin) %>
+                                      <%- end %>  
+
+                                    </p>
     							</div><!-- End .pull-right -->
     						</div><!-- End .header-top-right -->
     					</div><!-- End .col-md-12 -->
