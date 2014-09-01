@@ -47,10 +47,6 @@
                                         <%= link_to 'Edit profile',edit_user_registration_path %>
                                       <%-else%>
                                         <%= link_to 'Sign in', new_user_session_path %>
-                                        &nbsp;&nbsp; 
-                                        <%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %>
-                                         &nbsp;&nbsp; 
-                                        <%= link_to "Sign in with Linkedin",user_omniauth_authorize_path(:linkedin) %>
                                       <%- end %>  
 
                                     </p>
