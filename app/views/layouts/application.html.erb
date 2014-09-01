@@ -8,6 +8,17 @@
 </head>
 <body>
 
+<div id="wrapper">
+
+    <!--header of page-->
+    <header id="header">
+      
+        <%= render "layouts/headertop"%>
+        <%= render "layouts/headerbottom"%>
+
+
+    </header><!-- End #header -->
+
 
 <ul class="nav nav-pills">
   <li class="active"><%=link_to "Home",root_path%></li>
@@ -27,7 +38,16 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
-<%= yield %>
+    <!--section of page-->
+    <%= yield %>
+
+    <!--footer of page-->
+    <%= render "layouts/footer"%> 
+
+    <!--scroll top-->
+    <a href="#" id="scroll-top" title="Scroll to Top"><i class="fa fa-angle-up"></i></a><!-- End #scroll-top -->
+    <%= render "layouts/scriptlinks"%>
+  </div><!--end of wrapper-->
 
 </body>
 </html>
