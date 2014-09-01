@@ -18,8 +18,16 @@
   <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
 <% end -%>
 
-<%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
-  <% end -%>
-<% end -%>
+<%#- if devise_mapping.omniauthable? %>
+  <%#- resource_class.omniauth_providers.each do |provider| %>
+    <%#= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
+  <%# end -%>
+<%# end -%>
+<%= link_to image_tag("images.jpeg", :width => 150, :height => 100), user_omniauth_authorize_path(:twitter) %>
+<%= link_to image_tag("linkedin.jpeg", :width => 150, :height => 100),user_omniauth_authorize_path(:linkedin) %>
+<%= link_to image_tag("face.jpeg", :width => 150, :height => 100), user_omniauth_authorize_path(:facebook) %>
+
+
+
+
+
