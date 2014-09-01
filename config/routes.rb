@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :orders
+
   resources :line_items do
     patch 'amend', on: :member
   end
