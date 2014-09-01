@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
-  root 'welcome#index'
+  resources :line_items do
+    patch 'amend', on: :member
+  end
+
+  resources :carts
+
+  root 'productcategories#index'
   devise_for :users,:controllers => { :omniauth_callbacks => "omniauth_callbacks" }, :path => '', :path_names => {:sign_up => 'signup', :sign_in => 'signin', :sign_out => 'signout'}
 
   devise_for :admins, :path => '/admin', :path_names => {:sign_up => 'register', :sign_in => 'signin', :sign_out => 'signout'}

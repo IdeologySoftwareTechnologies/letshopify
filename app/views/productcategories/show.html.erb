@@ -11,6 +11,8 @@
 
     <% @productcategory.products.each do |product| %>
       <li><%= link_to product.name ,productcategory_product_path(@productcategory,product)%>    </li>
+       <%= image_tag  product.productimage_url %>
+      <li><%= button_to 'Add to Cart', line_items_path(product_id: product) %></li>
   
     <% end %>
   </ul>

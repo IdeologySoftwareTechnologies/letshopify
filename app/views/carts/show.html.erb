@@ -1,0 +1,31 @@
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+ 
+<h2>Your Cart</h2>
+<table>  
+  <% @cart.line_items.each do |item| %>
+    <tr>
+	    <td><%= item.quantity %> &times;<%= item.product.name %>&nbsp</td>
+	    <td class="item_price"><%= number_to_currency(item.total_price) %></td>
+	    <td><%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	    
+	     <td>
+	        
+	         <%= form_tag amend_line_item_path(item_id: item) ,:method => "patch" do %>
+	            
+	            <div class="field">
+	                    <%= number_field_tag :quantity, :value => item.quantity %>
+	                    <%= submit_tag "Update" %>
+	            </div>
+
+	         <% end %>
+	      </td>
+	      <tr><td class="total_cell">Total&nbsp<%= number_to_currency(@cart.total_price) %></td></tr>
+
+   <% end %>
+    </tr>
+
+</table>
+<%= button_to 'Empty cart', @cart, method: :delete,
+    data: { confirm: 'Are you sure?' } %>
