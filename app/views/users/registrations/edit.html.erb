@@ -1,41 +1,63 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="row">
+  <div class="col-xs-4"></div>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+  <div class="col-xs-3">
+    <h2>Edit <%= resource_name.to_s.humanize %></h2>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :first_name, required: true, autofocus: true,label: false,input_html: { :class => 'form-control ' },placeholder: "first name" %>
+      
+<br>
 
-  <div class="form-inputs">
-    <%= f.input :first_name, required: true, autofocus: true %>
-    <%= f.input :last_name, required: true %>
-    <%= f.input :telephone,required: true %>
-    <%= f.input :fax, required: true %>
-     <%= f.input :company, required: true %>
-    <%= f.input :address1, required: true %>
-    <%= f.input :address2, required: true %>
-    <%= f.input :city, required: true %>
-    <%= f.input :post_code, required: true %>
-    <%= f.input :country, required: true %>
-     <%= f.input :state, required: true %>
-     <%= f.input :user_avatar,label: "select a profile image" %>
-
-
-    <%= f.input :email, required: true %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <%= f.input :last_name, required: true,input_html: { :class => 'form-control' },placeholder: "Last name",label: false %><br>
+  <%= f.input :telephone, required: true,input_html: { :class => 'form-control' },placeholder: "Telephone",label: false %><br>
+  <%= f.input :fax, required: true,input_html: { :class => 'form-control' },placeholder: "Fax",label: false %><br>
+  <%= f.input :company, required: true,input_html: { :class => 'form-control' },placeholder: "Company",label: false %><br>
+  <%= f.input :address1, required: true,input_html: { :class => 'form-control' },placeholder: "Address1",label: false %><br>
+  <%= f.input :address2, required: true,input_html: { :class => 'form-control' },placeholder: "Address2",label: false %><br>
+  <%= f.input :city, required: true,input_html: { :class => 'form-control' },placeholder: "City",label: false %><br>
+  <%= f.input :post_code, required: true,input_html: { :class => 'form-control' },placeholder: "Post-Code",label: false %><br>
+  <%= f.input :country, required: true,input_html: { :class => 'form-control' },placeholder: "Country",label:"Select your Country" %><br>
+  <%= f.input :state, required: true,input_html: { :class => 'form-control' },placeholder: "State",label: false %><br>
+  
+  <%= f.input :email, required: true,input_html: { :class => 'form-control' },placeholder: "Email",label: false %><br>
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-    <%= f.input :password_confirmation, required: false %>
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
-  </div>
+  <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false,input_html: { :class => 'form-control' },label: false,placeholder: "Password" %><br>
+  <%= f.input :password_confirmation, autocomplete: "off", required: false,input_html: { :class => 'form-control' },label: false,placeholder: "confirm password" %><br>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
 
-<h3>Cancel my account</h3>
+  <%= f.input :current_password, autocomplete: "off", hint: "we need your current password to confirm your changes", required: true,input_html: { :class => 'form-control' },label: false,placeholder: "current password" %><br>
+  <%= f.input :user_avatar, required: true,label: "Upload a profile picture" %><br>
+
+
+    <%= f.button :submit, "Update",class: "btn btn-lg btn-primary btn-block" %>
+    
+    <h3>Cancel my account</h3>
 
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+      
+    <%end%>
+
+  </div>
+  <div class="col-xs-4"> <!--<div class="form-group has-feedback">
+    <label class="control-label">Username</label>
+    <input type="text" class="form-control" placeholder="Username" />
+    <i class="glyphicon glyphicon-user form-control-feedback"></i>
+</div>--> </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
