@@ -27,11 +27,18 @@
 														  <% @a=productcategory.children %>
 														  <% @a.each do |i|%>
 														    
-															<li><%=link_to Productcategory.where(:id=>i).pluck(:name).join(""),i%></li>
-															<ul >
-															  <li>ddd</li>
-															  <li>ddd</li>
-															</ul>
+															<li><%=link_to Productcategory.where(:id=>i).pluck(:name).join(""),i%>
+															<% if i.leaf?%>
+															<% else %>
+															  <ul class="mega-menu1 clearfix">
+															    <% @catchildren=i.children %>
+														  	    <% @catchildren.each do |catchild|%>
+															      <li><%=link_to Productcategory.where(:id=>catchild).pluck(:name).join(""),catchild%>
+															      </li>
+															    <% end %><!--end of @catchildren.each do-->
+															  </ul>
+															<% end %><!--end of if i.leaf? -->
+															</li>
 														  <%end%>
 														</ul>
 														
